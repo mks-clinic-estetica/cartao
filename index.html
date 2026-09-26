@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MKS CLINIC | Estética Avançada</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome CDN for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts: Cormorant Garamond & Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        nude: {
+                            50: '#FAF6F3',
+                            100: '#F4ECE6',
+                            200: '#E8D8CD',
+                            300: '#DCBEB0',
+                            400: '#C79A88',
+                            500: '#A87A68',
+                        },
+                        gold: {
+                            light: '#F7E7CE',
+                            DEFAULT: '#D4AF37',
+                            dark: '#AA771C',
+                        },
+                        charcoal: '#1A1817'
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #E6D5C7;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.75) 0%, transparent 60%),
+                radial-gradient(circle at 100% 100%, rgba(212, 175, 55, 0.18) 0%, transparent 50%),
+                radial-gradient(circle at 0% 50%, rgba(168, 122, 104, 0.15) 0%, transparent 50%);
+            background-attachment: fixed;
+            font-family: 'Montserrat', sans-serif;
+            color: #2D2725;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .gold-button-border {
+            border: 1px solid rgba(212, 175, 55, 0.45);
+            box-shadow: 0 4px 20px rgba(168, 122, 104, 0.12);
+        }
+
+        .gold-button-border:active {
+            transform: scale(0.98);
+        }
+
+        /* Continuous Golden Star Shimmer Animation */
+        @keyframes starGlow {
+            0%, 100% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 2px rgba(212, 175, 55, 0.4));
+                color: #D4AF37;
+            }
+            50% {
+                transform: scale(1.25);
+                filter: drop-shadow(0 0 8px rgba(255, 223, 0, 0.95));
+                color: #FFF2A8;
+            }
+        }
+
+        .star-animated {
+            display: inline-block;
+            animation: starGlow 1.8s infinite ease-in-out;
+        }
+
+        .star-1 { animation-delay: 0.0s; }
+        .star-2 { animation-delay: 0.2s; }
+        .star-3 { animation-delay: 0.4s; }
+        .star-4 { animation-delay: 0.6s; }
+        .star-5 { animation-delay: 0.8s; }
+
+        /* VIP Card Shimmer Effect */
+        @keyframes vipShimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .vip-shimmer-border {
+            position: relative;
+            background: #121110;
+        }
+
+        .vip-shimmer-border::before {
+            content: '';
+            position: absolute;
+            top: -1px; left: -1px; right: -1px; bottom: -1px;
+            background: linear-gradient(90deg, #AA771C, #FFDF00, #AA771C, #FFDF00);
+            background-size: 300% 100%;
+            border-radius: 1.25rem;
+            z-index: 0;
+            animation: vipShimmer 4s infinite linear;
+            opacity: 0.85;
+        }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+        }
+
+        .glass-card:hover, .glass-card:active {
+            background: rgba(255, 255, 255, 0.92);
+        }
+
+        /* Pulse aura for primary button */
+        @keyframes auraPulse {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.45); }
+            70% { box-shadow: 0 0 0 12px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+
+        .pulse-aura {
+            animation: auraPulse 2.2s infinite;
+        }
+    </style>
+</head>
+<body class="min-h-full flex flex-col items-center justify-between p-4 sm:p-6 select-none">
+
+    <main class="w-full max-w-md mx-auto flex flex-col items-center space-y-6 pt-2 pb-8">
+        
+        <!-- HEADER SECTION: Exact Emblem Logo & Brand Title -->
+        <header class="flex flex-col items-center text-center space-y-3 w-full">
+            
+            <!-- Logo Emblem SVG (vetorizado a partir da logo real da MKS Clinic, alta definicao) -->
+            <div class="relative flex items-center justify-center w-32 h-32 mb-0">
+                <div class="absolute inset-0 rounded-full bg-amber-100/60 blur-xl"></div>
+                <svg viewBox="54 -15 1201 1201" class="w-32 h-32 relative z-10 drop-shadow-md" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="mksGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#7A5210" />
+                            <stop offset="25%" stop-color="#C5A046" />
+                            <stop offset="50%" stop-color="#FFF5B8" />
+                            <stop offset="75%" stop-color="#D4AF37" />
+                            <stop offset="100%" stop-color="#6B460B" />
+                        </linearGradient>
+                    </defs>
+
+                    <!-- Emblema oficial MKS Clinic (rosace de 8 petalas entrelacadas) -->
+                    <g transform="translate(0.000000,1168.000000) scale(0.100000,-0.100000)" fill="url(#mksGoldGrad)" stroke="none">
+                        <path d="M7495 10969 c-66 -5 -185 -22 -265 -39 -80 -17 -189 -37 -242 -45
+-53 -8 -128 -26 -165 -41 -47 -17 -102 -28 -176 -34 -59 -5 -111 -12 -116 -15
+-5 -3 -49 2 -98 10 -48 9 -133 20 -188 25 -211 20 -428 65 -505 105 -116 61
+-754 -8 -971 -105 -36 -17 -75 -30 -87 -30 -30 0 -227 -75 -282 -108 -25 -14
+-58 -34 -75 -42 -149 -81 -230 -145 -400 -316 -179 -181 -344 -387 -376 -472
+-5 -13 -20 -38 -34 -56 -36 -47 -110 -210 -131 -286 -26 -100 -127 -290 -182
+-347 -55 -55 -147 -115 -212 -138 -25 -8 -63 -24 -85 -35 -22 -11 -74 -34
+-115 -51 -186 -78 -397 -196 -504 -282 -29 -23 -76 -60 -106 -82 -59 -45 -249
+-228 -289 -280 -137 -177 -241 -328 -241 -349 0 -6 -10 -27 -23 -46 -13 -19
+-35 -69 -51 -110 -15 -41 -37 -97 -48 -125 -32 -80 -55 -163 -73 -265 -9 -52
+-23 -115 -31 -140 -7 -25 -18 -112 -23 -195 -16 -246 7 -476 74 -730 13 -49
+27 -119 30 -155 4 -36 16 -87 27 -115 11 -29 23 -93 28 -157 5 -60 12 -112 15
+-117 3 -5 -1 -49 -10 -97 -8 -47 -15 -115 -15 -150 0 -34 -7 -90 -16 -124 -8
+-33 -19 -105 -24 -158 -9 -103 -34 -204 -65 -262 -61 -116 8 -754 105 -971 17
+-36 30 -75 30 -87 0 -30 75 -227 108 -282 14 -25 34 -58 42 -75 81 -149 145
+-230 316 -400 181 -179 387 -344 472 -376 13 -5 38 -20 56 -34 47 -35 210
+-110 286 -131 113 -30 293 -129 358 -195 42 -44 115 -163 132 -214 7 -22 16
+-45 21 -50 4 -6 24 -51 43 -100 19 -50 48 -120 65 -157 17 -37 31 -72 31 -79
+0 -6 19 -41 42 -78 24 -36 54 -88 68 -115 14 -26 52 -80 85 -120 34 -39 79
+-96 102 -126 43 -59 213 -233 284 -290 142 -115 354 -246 444 -275 22 -7 85
+-30 140 -50 106 -39 287 -88 370 -99 28 -4 64 -11 80 -16 17 -5 93 -14 171
+-19 190 -13 389 0 574 39 80 17 192 38 249 46 58 9 134 27 170 40 45 17 101
+28 174 34 59 5 111 12 116 15 5 3 49 -2 98 -10 48 -9 131 -20 183 -25 214 -21
+425 -65 500 -105 116 -61 754 8 971 105 36 17 75 30 87 30 30 0 227 75 282
+108 25 14 59 34 75 42 149 81 230 145 400 316 179 181 344 387 376 472 5 13
+20 38 34 56 36 47 110 210 131 286 26 100 127 290 182 347 55 55 147 115 212
+138 25 8 63 24 85 35 85 41 291 132 310 137 11 4 49 24 85 47 36 23 87 52 114
+66 26 14 85 56 129 94 45 38 101 81 124 96 47 30 224 208 290 292 98 124 213
+292 213 312 0 6 11 27 23 46 13 19 41 87 61 150 21 63 44 127 52 142 13 25 31
+101 69 293 8 39 20 97 26 130 16 80 17 492 2 565 -61 281 -75 353 -83 407 -6
+34 -21 93 -36 130 -22 60 -45 208 -47 313 -1 36 32 262 50 345 8 38 19 113 23
+165 9 101 35 202 65 260 61 116 -8 754 -105 971 -17 36 -30 75 -30 87 0 30
+-75 227 -108 282 -14 25 -34 59 -42 75 -81 149 -145 230 -316 400 -181 179
+-387 344 -472 376 -13 5 -38 20 -56 34 -47 36 -210 110 -286 131 -100 26 -290
+127 -347 182 -55 55 -115 147 -138 212 -8 25 -24 63 -35 85 -41 85 -132 291
+-137 310 -4 11 -24 49 -47 85 -23 36 -52 87 -66 114 -14 26 -52 80 -85 120
+-34 39 -79 96 -102 126 -43 59 -213 232 -284 290 -92 74 -268 191 -344 229
+-139 68 -348 140 -505 174 -41 9 -106 23 -145 31 -63 14 -329 38 -380 34 -11
+0 -74 -5 -140 -9z m-1815 -408 c115 -11 192 -27 274 -58 58 -22 70 -31 83 -60
+24 -58 8 -87 -147 -263 -81 -93 -172 -214 -195 -260 -10 -19 -33 -56 -52 -82
+-19 -26 -52 -95 -74 -154 -23 -59 -47 -117 -54 -128 -13 -20 -37 -96 -91 -286
+-14 -47 -36 -161 -50 -255 -24 -157 -25 -186 -19 -381 l6 -212 -40 0 c-25 -1
+-45 5 -53 15 -18 22 -228 197 -301 252 -68 50 -229 157 -278 185 -124 70 -357
+159 -514 196 -49 11 -103 25 -120 30 -39 11 -127 28 -185 35 -106 13 -146 76
+-114 183 9 31 23 81 30 111 8 29 21 65 28 80 8 14 24 51 36 81 40 105 226 357
+326 440 42 36 95 83 118 105 72 70 177 140 327 218 186 97 343 161 439 176 41
+7 125 21 185 31 113 19 236 19 435 1z m2165 -23 c61 -11 139 -24 174 -29 89
+-14 348 -102 416 -141 11 -7 64 -36 117 -64 54 -29 135 -81 180 -116 93 -70
+280 -253 318 -311 14 -21 41 -59 60 -84 81 -109 193 -324 230 -442 28 -93 30
+-103 16 -129 -26 -49 -80 -83 -154 -94 -37 -6 -121 -22 -187 -35 -66 -14 -142
+-29 -170 -33 -27 -4 -77 -19 -110 -33 -33 -14 -80 -30 -104 -37 -55 -14 -253
+-113 -301 -149 -19 -14 -53 -37 -76 -51 -24 -14 -95 -65 -159 -115 -64 -49
+-124 -94 -133 -100 -9 -5 -42 -29 -73 -52 -40 -30 -64 -41 -83 -39 -40 5 -49
+19 -47 73 5 152 -35 545 -64 628 -7 22 -17 65 -20 95 -7 52 -100 326 -129 380
+-7 14 -19 42 -25 62 -10 30 -99 171 -191 302 -43 62 -105 138 -231 287 -55 64
+-69 89 -69 122 0 28 48 74 83 81 302 56 513 63 732 24z m-1228 -369 c42 -16
+73 -37 113 -78 30 -31 75 -71 98 -90 119 -94 323 -431 389 -646 74 -236 108
+-513 93 -741 -11 -163 -20 -224 -52 -359 -44 -190 -71 -273 -114 -360 -24 -50
+-44 -94 -44 -98 0 -6 -20 -37 -121 -188 -52 -77 -237 -255 -327 -314 -57 -37
+-126 -40 -193 -7 -54 26 -289 258 -323 318 -12 22 -46 71 -76 109 -77 102
+-176 325 -224 507 -59 219 -58 217 -63 436 -6 244 4 346 49 532 26 107 78 258
+107 311 5 8 30 58 56 110 27 52 62 112 80 134 18 22 38 51 45 64 18 36 120
+154 160 187 19 16 42 38 50 49 42 57 170 144 212 145 15 0 53 -10 85 -21z
+m-2587 -1484 c159 -43 270 -81 353 -120 105 -50 199 -104 231 -134 12 -10 41
+-29 66 -41 54 -28 142 -95 190 -145 19 -21 67 -63 105 -93 39 -31 167 -153
+287 -272 119 -118 245 -243 280 -276 34 -34 135 -138 223 -232 88 -94 185
+-193 216 -219 54 -47 154 -165 179 -212 16 -31 8 -109 -16 -155 -10 -20 -58
+-75 -105 -124 -47 -48 -128 -132 -179 -187 -112 -120 -212 -210 -262 -236 -70
+-36 -156 -21 -250 43 -87 60 -312 274 -812 773 -353 353 -457 466 -529 575
+-20 30 -43 64 -50 75 -31 45 -125 225 -155 295 -17 41 -43 116 -57 165 -15 50
+-37 124 -50 165 -56 185 -38 272 70 335 72 43 158 49 265 20z m5253 14 c92
+-25 151 -117 149 -234 -1 -71 -5 -87 -61 -276 -43 -148 -150 -368 -210 -433
+-10 -12 -29 -41 -41 -66 -28 -54 -95 -142 -145 -190 -21 -19 -63 -66 -93 -105
+-31 -38 -153 -167 -272 -286 -118 -119 -232 -234 -252 -255 -20 -22 -126 -124
+-235 -227 -109 -103 -218 -212 -243 -241 -25 -29 -77 -78 -117 -109 -56 -45
+-83 -59 -126 -67 -76 -14 -118 7 -231 117 -50 49 -136 132 -191 183 -123 115
+-221 223 -246 272 -26 50 -24 121 4 181 39 84 135 187 792 854 263 267 236
+241 332 331 96 89 190 166 263 215 30 20 64 43 75 50 45 31 225 125 295 154
+68 29 166 61 350 114 106 30 147 34 203 18z m-6126 -72 c28 -16 61 -59 73 -94
+5 -15 16 -75 25 -131 8 -57 24 -133 35 -169 11 -36 20 -83 20 -104 0 -22 16
+-80 35 -129 19 -49 35 -96 35 -103 0 -21 118 -257 149 -297 14 -19 37 -53 51
+-76 14 -24 66 -95 115 -159 50 -64 95 -124 100 -133 6 -10 31 -44 56 -78 45
+-59 46 -62 33 -92 -7 -18 -20 -32 -28 -32 -211 0 -519 -28 -631 -57 -33 -8
+-91 -21 -130 -28 -83 -16 -257 -76 -440 -153 -72 -30 -229 -130 -313 -200 -26
+-22 -60 -46 -77 -55 -16 -9 -77 -60 -135 -113 -144 -132 -195 -152 -244 -93
+-14 17 -28 40 -30 52 -46 241 -51 580 -12 787 8 41 17 100 21 130 13 116 107
+351 212 530 106 179 309 423 395 473 21 12 73 47 116 78 111 82 311 187 427
+225 114 38 113 37 142 21z m6918 -16 c166 -39 329 -116 484 -230 116 -84 143
+-110 216 -201 28 -34 68 -81 90 -104 72 -74 141 -178 222 -336 140 -270 155
+-317 204 -630 22 -139 22 -185 -1 -420 -12 -125 -25 -190 -57 -274 -22 -58
+-31 -70 -60 -83 -58 -24 -87 -8 -263 147 -93 81 -214 172 -260 195 -19 10 -56
+33 -82 52 -26 19 -95 52 -154 74 -59 23 -117 47 -128 54 -20 13 -96 37 -286
+91 -47 14 -161 36 -255 50 -157 24 -186 25 -382 19 l-213 -6 0 33 c0 26 11 48
+46 89 25 30 53 63 61 74 9 11 39 47 68 80 62 73 151 194 189 255 15 25 37 59
+49 76 88 126 191 386 247 619 32 131 49 214 55 265 8 62 37 107 77 119 45 13
+43 13 133 -8z m-165 -2060 c163 -43 265 -81 390 -146 41 -22 88 -45 104 -52
+16 -8 48 -28 70 -47 23 -18 52 -39 65 -46 36 -18 154 -120 187 -160 16 -19 38
+-42 49 -50 58 -42 145 -171 145 -214 0 -57 -42 -140 -99 -196 -31 -30 -71 -75
+-90 -98 -94 -119 -431 -323 -646 -389 -236 -74 -513 -108 -740 -93 -144 10
+-302 32 -348 49 -12 5 -59 16 -105 25 -100 20 -213 60 -262 92 -19 13 -51 29
+-70 35 -32 12 -64 32 -215 133 -87 60 -289 276 -324 349 -25 52 -27 97 -5 162
+13 38 38 69 120 149 146 144 175 166 380 303 94 63 368 166 567 213 122 29
+123 29 397 26 l275 -4 155 -41z m-6025 18 c50 -5 119 -16 155 -24 36 -8 109
+-24 163 -35 115 -24 227 -63 277 -96 19 -13 51 -29 70 -35 19 -7 66 -33 103
+-58 38 -25 86 -58 108 -72 49 -33 144 -124 224 -214 128 -145 146 -201 99
+-305 -60 -134 -398 -410 -624 -511 -156 -68 -327 -125 -468 -154 -131 -27
+-138 -28 -390 -22 l-257 5 -156 41 c-86 22 -182 52 -215 66 -130 57 -311 150
+-349 180 -22 18 -51 38 -64 45 -40 21 -154 119 -181 156 -14 19 -39 44 -56 56
+-59 44 -144 168 -144 211 0 59 42 141 104 203 34 33 79 81 101 105 23 24 77
+71 120 104 80 61 226 155 240 155 4 0 50 20 101 45 293 142 659 196 1039 154z
+m2740 -96 c71 -48 137 -103 272 -226 138 -125 163 -153 250 -274 110 -153 110
+-161 -5 -313 -151 -199 -475 -493 -569 -516 -38 -10 -64 2 -174 85 -225 169
+-529 507 -529 588 0 33 94 170 201 292 113 129 193 205 299 282 169 122 188
+128 255 82z m-1057 -1055 c68 -31 428 -370 512 -483 55 -75 70 -109 70 -162 0
+-102 -59 -180 -381 -508 -114 -115 -237 -243 -274 -284 -71 -77 -365 -369
+-495 -492 -91 -85 -191 -167 -251 -204 -24 -15 -57 -38 -72 -51 -75 -62 -331
+-181 -492 -228 -49 -15 -110 -33 -135 -41 -83 -27 -174 -37 -217 -26 -60 16
+-127 72 -148 123 -21 52 -22 161 -2 233 77 275 128 397 231 551 34 50 77 118
+96 150 19 33 69 95 110 139 42 44 93 102 115 130 22 27 149 160 282 295 133
+135 246 249 250 253 4 4 96 92 204 195 108 103 223 215 254 249 31 35 85 85
+119 112 58 47 74 53 167 70 4 0 29 -9 57 -21z m2117 -17 c91 -41 166 -107 553
+-486 552 -539 806 -804 847 -885 10 -19 28 -48 40 -65 24 -33 102 -175 151
+-275 33 -69 114 -301 114 -329 0 -9 9 -38 19 -66 44 -116 36 -216 -22 -282
+-45 -51 -105 -76 -186 -75 -67 1 -84 5 -276 62 -116 34 -391 163 -435 204 -14
+13 -47 35 -75 49 -63 32 -340 281 -622 559 -120 119 -233 231 -250 249 -95 99
+-442 448 -463 465 -14 11 -39 40 -57 65 -18 24 -42 56 -54 71 -15 18 -24 45
+-27 80 -7 92 14 127 193 315 233 245 292 298 380 346 40 22 121 21 170 -2z
+m3529 -92 c28 -32 28 -35 45 -144 41 -269 44 -460 11 -635 -12 -63 -26 -144
+-31 -179 -14 -89 -102 -348 -141 -416 -7 -11 -36 -64 -64 -117 -29 -54 -81
+-135 -116 -180 -70 -93 -253 -280 -311 -318 -21 -14 -59 -41 -84 -60 -108 -81
+-323 -193 -441 -230 -94 -29 -102 -30 -129 -16 -50 26 -84 80 -95 154 -6 37
+-22 121 -35 187 -14 66 -29 143 -33 170 -4 28 -19 77 -33 110 -14 33 -30 80
+-37 104 -6 25 -22 65 -35 90 -84 170 -105 209 -120 221 -9 7 -26 31 -37 53
+-21 42 -58 93 -153 213 -33 41 -68 92 -79 112 -10 20 -32 55 -49 76 -36 45
+-41 66 -24 89 10 14 40 18 182 22 185 6 388 27 475 51 30 8 89 21 130 29 80
+14 255 73 375 125 125 54 159 74 369 220 60 42 152 116 287 232 89 76 132 86
+173 37z m-9164 -24 c20 -14 78 -62 130 -107 113 -98 231 -189 280 -213 19 -10
+56 -33 82 -52 26 -19 95 -52 154 -74 59 -23 117 -47 128 -54 20 -13 96 -37
+286 -91 47 -14 162 -36 255 -50 156 -24 187 -25 378 -19 l207 6 0 -37 c0 -29
+-9 -47 -42 -84 -88 -98 -242 -298 -291 -379 -16 -25 -37 -55 -47 -66 -10 -11
+-29 -40 -42 -65 -13 -25 -29 -54 -36 -65 -22 -38 -110 -234 -120 -267 -6 -18
+-26 -85 -46 -148 -19 -63 -47 -180 -62 -260 -36 -191 -51 -226 -102 -240 -111
+-29 -406 83 -611 232 -123 90 -158 122 -226 208 -27 34 -68 81 -90 104 -72 74
+-141 178 -222 336 -100 192 -153 323 -170 420 -45 254 -55 347 -49 440 18 266
+36 373 77 475 20 51 29 62 59 72 43 15 74 9 120 -22z m4589 -930 c40 -19 86
+-58 174 -147 66 -68 127 -134 135 -148 9 -14 46 -68 83 -120 37 -53 79 -120
+94 -150 92 -181 99 -202 162 -435 l38 -140 -1 -315 -1 -315 -36 -140 c-20 -77
+-48 -167 -62 -200 -57 -131 -150 -312 -180 -350 -18 -22 -38 -51 -45 -64 -21
+-40 -119 -154 -156 -181 -19 -14 -44 -39 -56 -56 -28 -37 -65 -69 -136 -113
+-43 -28 -60 -33 -92 -28 -71 9 -142 51 -229 136 -45 44 -87 81 -92 81 -13 0
+-127 155 -184 249 -151 252 -212 453 -250 816 -17 168 -8 394 23 550 11 55 25
+132 32 170 14 89 63 235 99 300 16 27 32 61 36 74 4 13 28 55 54 93 25 38 58
+87 72 109 48 71 227 245 318 308 64 46 126 50 200 16z m1226 -1179 c28 -22 70
+-59 95 -81 25 -23 55 -48 66 -56 12 -8 73 -52 135 -99 119 -89 163 -120 239
+-163 139 -81 366 -169 535 -207 55 -13 120 -29 144 -37 25 -8 78 -18 119 -23
+146 -19 177 -65 143 -211 -27 -115 -83 -269 -121 -332 -18 -28 -58 -86 -89
+-127 -32 -41 -71 -95 -88 -120 -17 -25 -66 -74 -108 -110 -43 -36 -96 -83
+-119 -105 -74 -72 -178 -140 -336 -222 -270 -140 -317 -155 -630 -204 -139
+-22 -185 -22 -420 1 -193 18 -329 61 -361 114 -33 53 -16 86 123 246 98 113
+189 231 213 280 10 19 33 56 52 82 19 26 52 95 74 154 23 59 47 117 54 128 13
+20 37 96 91 286 14 47 36 162 50 255 24 157 25 186 19 382 l-6 212 38 -1 c28
+-1 51 -12 88 -42z m-2526 -30 c7 -5 9 -23 6 -54 -14 -104 27 -533 60 -642 7
+-25 28 -99 45 -165 18 -66 47 -154 65 -195 18 -41 40 -100 50 -130 10 -30 35
+-80 55 -110 20 -30 45 -71 55 -90 10 -19 37 -62 61 -95 24 -33 56 -78 71 -99
+16 -22 48 -63 73 -92 92 -107 165 -196 177 -217 22 -39 16 -83 -14 -106 -28
+-23 -31 -24 -138 -40 -267 -40 -471 -44 -640 -12 -60 11 -146 27 -190 35 -44
+9 -118 29 -165 45 -151 53 -225 81 -245 93 -11 7 -64 36 -117 64 -197 106
+-398 290 -558 510 -85 117 -194 327 -230 443 -28 93 -30 103 -16 129 15 29 75
+76 111 86 11 3 65 12 121 20 55 8 135 24 177 35 42 12 90 21 107 21 17 0 71
+16 120 35 49 19 94 35 100 35 26 0 244 117 342 183 102 68 151 105 355 258 70
+53 94 66 119 64 17 -1 36 -5 43 -9z"/>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Title & Subtitle -->
+            <div class="space-y-1">
+                <h1 class="font-serif text-3xl sm:text-4xl font-semibold tracking-wide text-charcoal uppercase leading-tight">
+                    MKS CLINIC
+                </h1>
+                <p class="font-sans text-xs tracking-[0.35em] text-amber-900/80 font-medium uppercase">
+                    Estética Avançada
+                </p>
+            </div>
+
+            <p class="text-xs sm:text-sm text-stone-700 max-w-[290px] font-light leading-relaxed pt-1">
+                Sua beleza e bem-estar em mãos de especialistas.
+            </p>
+        </header>
+
+        <!-- BUTTONS CONTAINER -->
+        <section class="w-full space-y-4 pt-1">
+
+            <!-- BUTTON 1: GOOGLE AVALIAÇÃO -->
+            <a href="https://search.google.com/local/writereview?placeid=ChIJE_ibEQA9qwcRUgRdnS_KhgM" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="glass-card gold-button-border pulse-aura rounded-2xl p-4 flex items-center justify-between transition-all duration-300 transform active:scale-98 group block w-full relative overflow-hidden">
+                
+                <div class="absolute inset-0 bg-gradient-to-r from-amber-100/50 via-amber-50/20 to-transparent opacity-80 pointer-events-none"></div>
+                
+                <div class="flex items-center space-x-3.5 relative z-10">
+                    <!-- Google Icon Wrapper -->
+                    <div class="w-12 h-12 rounded-xl bg-white shadow-sm border border-amber-200/60 flex items-center justify-center shrink-0">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24">
+                            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                        </svg>
+                    </div>
+
+                    <!-- Button Label & Animated Stars -->
+                    <div class="text-left">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-amber-900 block">
+                            Avaliação Google
+                        </span>
+                        <h2 class="text-sm sm:text-base font-bold text-stone-900 font-sans leading-tight">
+                            Deixe sua Avaliação 5 Estrelas
+                        </h2>
+                        
+                        <!-- Animated 5 Stars -->
+                        <div class="flex items-center space-x-1 mt-1 text-amber-500">
+                            <i class="fa-solid fa-star text-xs star-animated star-1"></i>
+                            <i class="fa-solid fa-star text-xs star-animated star-2"></i>
+                            <i class="fa-solid fa-star text-xs star-animated star-3"></i>
+                            <i class="fa-solid fa-star text-xs star-animated star-4"></i>
+                            <i class="fa-solid fa-star text-xs star-animated star-5"></i>
+                            <span class="text-[11px] font-medium text-amber-800 ml-1.5">(Clique para avaliar)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-8 h-8 rounded-full bg-amber-500/10 flex items-center justify-center shrink-0 relative z-10 text-amber-800 group-hover:translate-x-1 transition-transform">
+                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                </div>
+            </a>
+
+
+            <!-- BUTTON 2: INSTAGRAM -->
+            <a href="https://www.instagram.com/mks.clinic?stkn=MWJ4cW91NnM4MDQ4dg==" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="glass-card gold-button-border rounded-2xl p-4 flex items-center justify-between transition-all duration-300 transform active:scale-98 group block w-full">
+                
+                <div class="flex items-center space-x-3.5">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 text-white shadow-sm flex items-center justify-center shrink-0">
+                        <i class="fa-brands fa-instagram text-2xl"></i>
+                    </div>
+
+                    <div class="text-left">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-stone-500 block">
+                            Instagram Oficial
+                        </span>
+                        <h2 class="text-sm sm:text-base font-bold text-stone-900 font-sans leading-tight">
+                            Siga nosso Instagram
+                        </h2>
+                        <p class="text-xs text-amber-900 font-medium mt-0.5">
+                            @mks.clinic
+                        </p>
+                    </div>
+                </div>
+
+                <div class="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center shrink-0 text-stone-600 group-hover:translate-x-1 transition-transform">
+                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                </div>
+            </a>
+
+
+            <!-- BUTTON 3: WHATSAPP ATENDIMENTO -->
+            <a href="https://wa.me/558197301987?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20atendimento%20na%20MKS%20Clinic." 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="glass-card gold-button-border rounded-2xl p-4 flex items-center justify-between transition-all duration-300 transform active:scale-98 group block w-full">
+                
+                <div class="flex items-center space-x-3.5">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-600 text-white shadow-sm flex items-center justify-center shrink-0">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    </div>
+
+                    <div class="text-left">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-emerald-800 block">
+                            Atendimento & Agendamentos
+                        </span>
+                        <h2 class="text-sm sm:text-base font-bold text-stone-900 font-sans leading-tight">
+                            Entre em Contato
+                        </h2>
+                        <p class="text-xs text-stone-600 font-medium mt-0.5">
+                            Clique para conversar e agendar seu procedimento
+                        </p>
+                    </div>
+                </div>
+
+                <div class="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center shrink-0 text-emerald-700 group-hover:translate-x-1 transition-transform">
+                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                </div>
+            </a>
+
+
+            <!-- BUTTON 4: GRUPO VIP (Design Preto & Dourado de Luxo) -->
+            <div class="vip-shimmer-border rounded-2xl p-[1.5px] shadow-xl w-full">
+                <a href="https://chat.whatsapp.com/J373H4YQFpW2p8UOz6NJuk" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="bg-stone-950 rounded-[1.15rem] p-4 flex items-center justify-between transition-all duration-300 transform active:scale-98 group block w-full relative overflow-hidden">
+                    
+                    <div class="absolute inset-0 bg-gradient-to-r from-amber-500/10 via-transparent to-amber-500/5 pointer-events-none"></div>
+
+                    <div class="flex items-center space-x-3.5 relative z-10">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-stone-800 to-stone-900 border border-amber-500/40 text-amber-400 shadow-md flex items-center justify-center shrink-0 relative">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            <i class="fa-solid fa-crown text-[10px] text-amber-300 absolute -top-1 -right-1 bg-black p-1 rounded-full border border-amber-400"></i>
+                        </div>
+
+                        <div class="text-left">
+                            <div class="flex items-center space-x-1.5">
+                                <span class="text-[10px] font-bold uppercase tracking-widest bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-full border border-amber-500/30">
+                                    VIP EXCLUSIVO
+                                </span>
+                            </div>
+                            <h2 class="text-sm sm:text-base font-bold text-amber-100 font-sans leading-tight mt-1">
+                                Grupo VIP - Promoções
+                            </h2>
+                            <p class="text-xs text-stone-400 font-light mt-0.5">
+                                Acompanhe nossas promoções
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="w-8 h-8 rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center shrink-0 text-amber-300 group-hover:translate-x-1 transition-transform relative z-10">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </div>
+                </a>
+            </div>
+
+        </section>
+
+        <!-- FOOTER BRANDING -->
+        <footer class="text-center pt-6 space-y-1">
+            <p class="font-serif text-sm font-semibold text-stone-800 tracking-wider">
+                MKS CLINIC ESTÉTICA AVANÇADA
+            </p>
+            <p class="text-[10px] text-stone-500 tracking-wider uppercase">
+                Olinda - PE • Todos os direitos reservados
+            </p>
+        </footer>
+
+    </main>
+
+</body>
+</html>
